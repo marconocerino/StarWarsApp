@@ -36,14 +36,22 @@ else if (currentLocation is not null)
                         <div class="hero-search">
                             <span class="hero-search-icon">🔍</span>
                             <input class="hero-search-input"
-                                   placeholder="Find a character"
-                                   @bind="characterSearchTerm"
-                                   @bind:event="oninput"
-                                   @onkeydown="HandleSearchKeyDown" />
+                                  placeholder="Find a character"
+                                  @bind="characterSearchTerm"
+                                  @bind:event="oninput"
+                                  @onkeydown="HandleSearchKeyDown" />
                         </div>
 
-                        <button class="hero-search-button" @onclick="SearchCharacter">Search</button>
+                        <button class="hero-search-button"
+                                @onclick="SearchCharacter">
+                            Search
+                        </button>
                     </div>
+
+                    @if (!string.IsNullOrEmpty(searchError))
+                    {
+                        <p class="hero-search-error">@searchError</p>
+                    }
                 </div>
 
                 <div class="hero-bottom">
@@ -87,6 +95,11 @@ else if (currentLocation is not null)
     private bool isLoading = true;
     private string? errorMessage;
     private string characterSearchTerm = "";
+    private string? searchError;
+
+    private bool IsSearchValid =>
+        !string.IsNullOrWhiteSpace(characterSearchTerm) &&
+        characterSearchTerm.Trim().Length >= 2;
 
     protected override async Task OnInitializedAsync()
     {
@@ -137,9 +150,19 @@ else if (currentLocation is not null)
     {
         var query = characterSearchTerm.Trim();
 
-        if (query.Length < 2)
+        if (string.IsNullOrWhiteSpace(query))
+        {
+            searchError = "Please enter a character name.";
             return;
+        }
 
+        if (query.Length < 2)
+        {
+            searchError = "Type at least 2 characters.";
+            return;
+        }
+
+        searchError = null;
         NavManager.NavigateTo($"/characters/{Uri.EscapeDataString(query)}");
     }
 
