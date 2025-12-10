@@ -23,30 +23,27 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Restore app
-        run: dotnet restore StarWarsApp.csproj
+      - name: Restore Dependencies
+        run: dotnet restore
 
-      - name: Restore E2E tests
-        run: dotnet restore StarWarsApp.E2E/StarWarsApp.E2E.csproj
+      - name: Build Application
+        run: dotnet build
 
-      - name: Build app
-        run: dotnet build StarWarsApp.csproj --configuration Release --no-restore
-
-      - name: Build E2E tests
-        run: dotnet build StarWarsApp.E2E/StarWarsApp.E2E.csproj --configuration Release --no-restore
-
-      - name: Install Playwright CLI
+      - name: Install Playwright CLI and Browsers
         run: |
+          # Install CLI globally
           dotnet tool install --global Microsoft.Playwright.CLI
+          # Add the .NET tools folder to the PATH for the Playwright command
           echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
-
-      - name: Install Playwright browsers
-        run: playwright install --with-deps
+          # Install browsers
+          playwright install --with-deps
 
       - name: Start app
         run: |
-          dotnet run --project StarWarsApp.csproj --configuration Release --urls $ASPNETCORE_URLS &
+          dotnet run --project StarWarsApp/StarWarsApp.csproj --configuration Release --urls $ASPNETCORE_URLS &
+
           echo "Waiting for app to start..."
+          # Wait loop as before
           for i in {1..30}; do
             if curl -sSf "$ASPNETCORE_URLS" > /dev/null; then
               echo "App is up!"
@@ -57,12 +54,11 @@ jobs:
           done
 
       - name: Run E2E tests
-        run: dotnet test StarWarsApp.E2E/StarWarsApp.E2E.csproj --configuration Release --no-build
+        run: dotnet test StarWarsApp.E2E/StarWarsApp.E2E.csproj --configuration Release
 
       - name: Publish app
-        run: dotnet publish StarWarsApp.csproj -c Release -o ./publish
+        run: dotnet publish StarWarsApp/StarWarsApp.csproj -c Release -o ./publish
 
-      # Deploy to Azure App Service
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
