@@ -40,6 +40,10 @@ build_metadata.AdditionalFiles.CssScope = b-6spae10eyg
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0L05hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-iqdqu3mer6
 
+[/Users/marco/StarWarsApp/Pages/Characters.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2hhcmFjdGVycy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-rgpndt7tju
+
 [/Users/marco/StarWarsApp/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-vc2odwt54h

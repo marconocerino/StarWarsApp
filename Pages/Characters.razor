@@ -1,0 +1,84 @@
+@page "/characters"
+@inject HttpClient Http
+@inject NavigationManager NavManager
+
+<a id="top"></a>
+<PageTitle>Characters</PageTitle>
+
+<div class="characters-root">
+    <h2 class="characters-heading">Characters</h2>
+
+    @if (isLoading)
+    {
+        <p class="characters-status">Loading characters...</p>
+    }
+    else if (loadError is not null)
+    {
+        <p class="characters-status error">@loadError</p>
+    }
+    else if (characters is null || characters.Count == 0)
+    {
+        <p class="characters-status">No characters found.</p>
+    }
+    else
+    {
+        <div class="characters-list">
+            @foreach (var c in characters)
+            {
+                <section class="character-section">
+                    <div class="character-text">
+                        <h1 class="character-name">@c.Name</h1>
+                        <p class="character-description">@c.Description</p>
+                    </div>
+
+                    <div class="character-image-wrap">
+                        <img src="@c.Image"
+                             alt="@c.Name"
+                             class="character-image" />
+                    </div>
+                </section>
+            }
+        </div>
+    }
+</div>
+<button class="scroll-to-top" onclick="document.getElementById('top').scrollIntoView({behavior:'smooth'})">
+    ↑
+</button>
+
+@code {
+    private List<SwCharacter> characters = new();
+    private bool isLoading = true;
+    private string? loadError;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var response = await Http.GetFromJsonAsync<StarWarsResponse>(
+                "https://starwars-databank-server.vercel.app/api/v1/characters"
+            );
+
+            characters = response?.Data ?? new();
+        }
+        catch (Exception ex)
+        {
+            loadError = "Failed to load characters: " + ex.Message;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    public class StarWarsResponse
+    {
+        public List<SwCharacter> Data { get; set; } = new();
+    }
+
+    public class SwCharacter
+    {
+        public string Name { get; set; } = "";
+        public string Description { get; set; } = "";
+        public string Image { get; set; } = "";
+    }
+}

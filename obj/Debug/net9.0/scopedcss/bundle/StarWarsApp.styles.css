@@ -57,6 +57,98 @@
   color: #fff;
   box-shadow: 0 0 4px rgba(45, 107, 255, 0.35);
 }
+/* /Pages/Characters.razor.rz.scp.css */
+.characters-root[b-rgpndt7tju] {
+  min-height: 100vh;
+  background: #020308;
+  color: #f5f5f5;
+  padding: 2.5rem 3rem 4rem;
+}
+
+.characters-heading[b-rgpndt7tju] {
+  font-size: 1.2rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin: 0 0 1.5rem;
+}
+
+.characters-status[b-rgpndt7tju] {
+  opacity: 0.9;
+  font-size: 0.95rem;
+  color: #fff;
+}
+
+.characters-status.error[b-rgpndt7tju] {
+  color: #ff6b6b;
+}
+
+.characters-list[b-rgpndt7tju] {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.character-section[b-rgpndt7tju] {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding: 3rem 2rem;
+  border-radius: 1.2rem;
+  background: radial-gradient(circle at top left, #151824 0, #05060b 60%);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.75);
+}
+
+.character-text[b-rgpndt7tju] {
+  flex: 1;
+}
+
+.character-name[b-rgpndt7tju] {
+  font-size: 3rem;
+  margin: 0 0 1rem;
+  letter-spacing: 0.03em;
+}
+
+.character-description[b-rgpndt7tju] {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.character-image-wrap[b-rgpndt7tju] {
+  flex: 0 0 320px;
+  max-width: 340px;
+}
+
+.character-image[b-rgpndt7tju] {
+  width: 100%;
+  border-radius: 1rem;
+  object-fit: cover;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9);
+}
+
+.scroll-to-top[b-rgpndt7tju] {
+  position: fixed;
+  bottom: 2.2rem;
+  right: 2.2rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: none;
+  font-size: 1.6rem;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+  z-index: 200;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.scroll-to-top:hover[b-rgpndt7tju] {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.75);
+}
 /* /Pages/Home.razor.rz.scp.css */
 .hero-full[b-vc2odwt54h] {
   position: fixed;
@@ -237,6 +329,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #000;
+  color: #fff;
   font-size: 1.1rem;
 }
