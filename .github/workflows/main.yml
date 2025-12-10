@@ -1,0 +1,62 @@
+name: Build, test and deploy
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      DOTNET_VERSION: "8.0.x"
+      ASPNETCORE_URLS: "http://localhost:5276"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Install Playwright CLI
+        run: dotnet tool install --global Microsoft.Playwright.CLI
+
+      - name: Install Playwright browsers
+        run: playwright install --with-deps
+
+      - name: Start app
+        run: |
+          dotnet run --project StarWarsApp/StarWarsApp.csproj --configuration Release --urls $ASPNETCORE_URLS &
+          echo "Waiting..."
+          for i in {1..30}; do
+            if curl -sSf "$ASPNETCORE_URLS" > /dev/null; then
+              echo "App is up!"
+              break
+            fi
+            sleep 2
+          done
+
+      - name: Run E2E tests
+        run: dotnet test StarWarsApp.E2E/StarWarsApp.E2E.csproj --configuration Release --no-build
+
+      - name: Publish app
+        run: dotnet publish StarWarsApp/StarWarsApp.csproj -c Release -o ./publish
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: "starwars"
+          slot-name: "production"
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ./publish
