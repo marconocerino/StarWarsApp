@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
-using Microsoft.Playwright.NUnit;
 using NUnit.Framework;
+using Microsoft.Playwright;
+using Microsoft.Playwright.NUnit;
 
 namespace StarWarsApp.E2E;
 
@@ -67,3 +68,4 @@ public class HomePageTests : PageTest
     Assert.That(decodedUrl, Does.Contain(query));
   }
 }
+

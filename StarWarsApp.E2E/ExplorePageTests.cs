@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
-using Microsoft.Playwright.NUnit;
 using NUnit.Framework;
+using Microsoft.Playwright;
+using Microsoft.Playwright.NUnit;
 
 namespace StarWarsApp.E2E;
 
@@ -88,3 +89,4 @@ public class ExplorePageTests : PageTest
     Assert.That(url, Does.Contain("/droids/").Or.Contain("/characters/").Or.Contain("/creatures/"), $"Unexpected detail URL: {url}");
   }
 }
+

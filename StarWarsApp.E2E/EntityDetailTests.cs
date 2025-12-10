@@ -1,8 +1,6 @@
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Playwright.NUnit;
 using NUnit.Framework;
+using Microsoft.Playwright;
+using Microsoft.Playwright.NUnit;
 
 namespace StarWarsApp.E2E;
 
@@ -79,3 +77,4 @@ public class EntityDetailTests : PageTest
     Assert.That(errorText, Does.Contain("No entity found").IgnoreCase);
   }
 }
+
