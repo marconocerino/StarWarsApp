@@ -1,11 +1,11 @@
-.characters-root {
+.creatures-root {
   min-height: 100vh;
   background: #020308;
   color: #f5f5f5;
   padding: 2.5rem 3rem 4rem;
 }
 
-.characters-heading {
+.creatures-heading {
   font-size: 1.2rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -13,17 +13,16 @@
   margin: 0 0 1.5rem;
 }
 
-.characters-status {
+.creatures-status {
   opacity: 0.9;
   font-size: 0.95rem;
-  color: #fff;
 }
 
-.characters-status.error {
+.creatures-status.error {
   color: #ff6b6b;
 }
 
-.characters-list {
+.creatures-list {
   display: flex;
   flex-direction: column;
   gap: 4rem;

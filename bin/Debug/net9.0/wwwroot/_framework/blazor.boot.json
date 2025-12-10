@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "StarWarsApp",
   "resources": {
-    "hash": "sha256-SMst0xRBRfSooCSYPvtwuEs3jMnGncYrR5dHVk1A5Qc=",
+    "hash": "sha256-fYslily+bZWoBGBMZYaFSiQG0O6vY1LdJu3rtDD9HLI=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Authorization.z6jo10m0rd.wasm": "Microsoft.AspNetCore.Authorization.wasm",
       "Microsoft.AspNetCore.Components.65wbz7t8mt.wasm": "Microsoft.AspNetCore.Components.wasm",
@@ -201,8 +201,8 @@
       "icudt_CJK.tjcz0u77k5.dat": "icudt_CJK.dat",
       "icudt_EFIGS.tptq2av103.dat": "icudt_EFIGS.dat",
       "icudt_no_CJK.lfu7j35m59.dat": "icudt_no_CJK.dat",
-      "StarWarsApp.l1y59n0y9j.wasm": "StarWarsApp.wasm",
-      "StarWarsApp.9n3tayndjq.pdb": "StarWarsApp.pdb"
+      "StarWarsApp.xnsej6a4e2.wasm": "StarWarsApp.wasm",
+      "StarWarsApp.tocc2bxro4.pdb": "StarWarsApp.pdb"
     },
     "jsModuleNative": {
       "dotnet.native.9ih887ebfz.js": "sha256-oS7IRiQoVt9ThQ7Y2UM3XoeY0JqPD02cg9IvRdufn2w="
@@ -412,10 +412,10 @@
       "WindowsBase.vy2l5u79y6.wasm": "sha256-ufB9Mo5joMyUs3DzXWWBFFIZNEVrt6h9N5stYB6Oln4=",
       "mscorlib.xd6mv31d55.wasm": "sha256-1YSLR2eZt3ceALFV//vZUF2AloxVil3VlrW1zZYPSEI=",
       "netstandard.kaml52uspo.wasm": "sha256-HLEwBpLfzKw2/zGSVzHzFJxznCkt/WIjahrziiMrOpA=",
-      "StarWarsApp.l1y59n0y9j.wasm": "sha256-mSDJ8z3B+jMxrJcBc3KQmahiD2AQVYrteTpBivvUbao="
+      "StarWarsApp.xnsej6a4e2.wasm": "sha256-nfPGhlSOc81p6hord8OyES977At6CqYg7DDqtdUE4DU="
     },
     "pdb": {
-      "StarWarsApp.9n3tayndjq.pdb": "sha256-S4aSvqSsRHKf8OZnnN9PQJ8YAeug+wAOiSLVuS5+7t8="
+      "StarWarsApp.tocc2bxro4.pdb": "sha256-Pek60+/rnEcZE52T0sf5Id4PjYkvJZtpuLyGa2/OLFw="
     }
   },
   "cacheBootResources": true,

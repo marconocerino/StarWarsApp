@@ -123,3 +123,26 @@ code {
 .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 2.2rem;
+  right: 2.2rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: none;
+  font-size: 1.6rem;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+  z-index: 200;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.scroll-to-top:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.75);
+}

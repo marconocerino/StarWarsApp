@@ -89,44 +89,6 @@
   gap: 4rem;
 }
 
-.character-section[b-rgpndt7tju] {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-  padding: 3rem 2rem;
-  border-radius: 1.2rem;
-  background: radial-gradient(circle at top left, #151824 0, #05060b 60%);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.75);
-}
-
-.character-text[b-rgpndt7tju] {
-  flex: 1;
-}
-
-.character-name[b-rgpndt7tju] {
-  font-size: 3rem;
-  margin: 0 0 1rem;
-  letter-spacing: 0.03em;
-}
-
-.character-description[b-rgpndt7tju] {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  opacity: 0.9;
-}
-
-.character-image-wrap[b-rgpndt7tju] {
-  flex: 0 0 320px;
-  max-width: 340px;
-}
-
-.character-image[b-rgpndt7tju] {
-  width: 100%;
-  border-radius: 1rem;
-  object-fit: cover;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9);
-}
-
 .scroll-to-top[b-rgpndt7tju] {
   position: fixed;
   bottom: 2.2rem;
@@ -146,6 +108,89 @@
 }
 
 .scroll-to-top:hover[b-rgpndt7tju] {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.75);
+}
+/* /Pages/Creatures.razor.rz.scp.css */
+.creatures-root[b-pnl6kvxf5v] {
+  min-height: 100vh;
+  background: #020308;
+  color: #f5f5f5;
+  padding: 2.5rem 3rem 4rem;
+}
+
+.creatures-heading[b-pnl6kvxf5v] {
+  font-size: 1.2rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin: 0 0 1.5rem;
+}
+
+.creatures-status[b-pnl6kvxf5v] {
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+.creatures-status.error[b-pnl6kvxf5v] {
+  color: #ff6b6b;
+}
+
+.creatures-list[b-pnl6kvxf5v] {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+/* /Pages/Droids.razor.rz.scp.css */
+.droids-root[b-hyp4qf5gna] {
+  min-height: 100vh;
+  background: #020308;
+  color: #f5f5f5;
+  padding: 2.5rem 3rem 4rem;
+}
+
+.droids-heading[b-hyp4qf5gna] {
+  font-size: 1.2rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin: 0 0 1.5rem;
+}
+
+.droids-status[b-hyp4qf5gna] {
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+.droids-status.error[b-hyp4qf5gna] {
+  color: #ff6b6b;
+}
+
+.droids-list[b-hyp4qf5gna] {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.scroll-to-top[b-hyp4qf5gna] {
+  position: fixed;
+  bottom: 2.2rem;
+  right: 2.2rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: none;
+  font-size: 1.6rem;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+  z-index: 200;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.scroll-to-top:hover[b-hyp4qf5gna] {
   transform: translateY(-2px);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.75);
 }
@@ -369,4 +414,48 @@
   border-radius: 1rem;
   object-fit: cover;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9);
+}
+/* /Shared/Pager.razor.rz.scp.css */
+.pager[b-7lm1uwkado] {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.8rem;
+  opacity: 0.92;
+}
+
+.pager-btn[b-7lm1uwkado] {
+  background: rgba(255, 255, 255, 0.08);
+  color: #f5f5f5;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.55rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease, opacity 0.2s ease;
+}
+
+.pager-btn:hover:not(:disabled)[b-7lm1uwkado] {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-1px);
+}
+
+.pager-btn:disabled[b-7lm1uwkado] {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.pager-page-indicator[b-7lm1uwkado] {
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  color: #f5f5f5;
+  opacity: 0.75;
+}
+
+.pager-sep[b-7lm1uwkado] {
+  opacity: 0.45;
+  margin: 0 0.2rem;
 }

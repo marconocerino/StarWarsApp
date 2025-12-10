@@ -1,0 +1,92 @@
+@using StarWarsApp.Shared
+
+@page "/droids"
+@inject HttpClient Http
+
+<a id="top"></a>
+<PageTitle>Droids</PageTitle>
+
+<div class="droids-root">
+    <h2 class="droids-heading">Droids</h2>
+
+    @if (isLoading)
+    {
+        <p class="droids-status">Loading droids...</p>
+    }
+    else if (loadError is not null)
+    {
+        <p class="droids-status error">@loadError</p>
+    }
+    else if (droids is null || droids.Count == 0)
+    {
+        <p class="droids-status">No droids found.</p>
+    }
+    else
+    {
+        <div class="droids-list">
+            @foreach (var d in PagedDroids)
+            {
+                <EntityCard Name="@d.Name"
+                            Description="@d.Description"
+                            ImageUrl="@d.Image" />
+            }
+        </div>
+
+        <Pager @bind-CurrentPage="currentPage"
+               TotalPages="@totalPages" />
+    }
+</div>
+
+<button class="scroll-to-top" onclick="document.getElementById('top').scrollIntoView({behavior:'smooth'})">
+    ↑
+</button>
+
+@code {
+    private List<SwDroid> droids = new();
+    private bool isLoading = true;
+    private string? loadError;
+
+    private int currentPage = 1;
+    private int pageSize = 6;
+    private int totalPages => droids is null || droids.Count == 0
+        ? 1
+        : (int)Math.Ceiling(droids.Count / (double)pageSize);
+
+    private IEnumerable<SwDroid> PagedDroids =>
+        droids
+            .Skip((currentPage - 1) * pageSize)
+            .Take(pageSize);
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var response = await Http.GetFromJsonAsync<DroidsResponse>(
+                "https://starwars-databank-server.vercel.app/api/v1/droids"
+            );
+
+            droids = response?.Data ?? new();
+            currentPage = 1;
+        }
+        catch (Exception ex)
+        {
+            loadError = "Failed to load droids: " + ex.Message;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    public class DroidsResponse
+    {
+        public List<SwDroid> Data { get; set; } = new();
+    }
+
+    public class SwDroid
+    {
+        public string Name { get; set; } = "";
+        public string Description { get; set; } = "";
+        public string Image { get; set; } = "";
+    }
+}

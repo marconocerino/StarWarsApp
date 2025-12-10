@@ -1,0 +1,92 @@
+@using StarWarsApp.Shared
+
+@page "/creatures"
+@inject HttpClient Http
+
+<a id="top"></a>
+<PageTitle>Creatures</PageTitle>
+
+<div class="creatures-root">
+    <h2 class="creatures-heading">Creatures</h2>
+
+    @if (isLoading)
+    {
+        <p class="creatures-status">Loading creatures...</p>
+    }
+    else if (loadError is not null)
+    {
+        <p class="creatures-status error">@loadError</p>
+    }
+    else if (creatures is null || creatures.Count == 0)
+    {
+        <p class="creatures-status">No creatures found.</p>
+    }
+    else
+    {
+        <div class="creatures-list">
+            @foreach (var creature in PagedCreatures)
+            {
+                <EntityCard Name="@creature.Name"
+                            Description="@creature.Description"
+                            ImageUrl="@creature.Image" />
+            }
+        </div>
+
+        <Pager @bind-CurrentPage="currentPage"
+               TotalPages="@totalPages" />
+    }
+</div>
+
+<button class="scroll-to-top" onclick="document.getElementById('top').scrollIntoView({behavior:'smooth'})">
+    ↑
+</button>
+
+@code {
+    private List<SwCreature> creatures = new();
+    private bool isLoading = true;
+    private string? loadError;
+
+    private int currentPage = 1;
+    private int pageSize = 6;
+    private int totalPages => creatures is null || creatures.Count == 0
+        ? 1
+        : (int)Math.Ceiling(creatures.Count / (double)pageSize);
+
+    private IEnumerable<SwCreature> PagedCreatures =>
+        creatures
+            .Skip((currentPage - 1) * pageSize)
+            .Take(pageSize);
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var response = await Http.GetFromJsonAsync<CreaturesResponse>(
+                "https://starwars-databank-server.vercel.app/api/v1/creatures"
+            );
+
+            creatures = response?.Data ?? new();
+            currentPage = 1;
+        }
+        catch (Exception ex)
+        {
+            loadError = "Failed to load creatures: " + ex.Message;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    public class CreaturesResponse
+    {
+        public List<SwCreature> Data { get; set; } = new();
+    }
+
+    public class SwCreature
+    {
+        public string Name { get; set; } = "";
+        public string Description { get; set; } = "";
+        public string Image { get; set; } = "";
+    }
+}

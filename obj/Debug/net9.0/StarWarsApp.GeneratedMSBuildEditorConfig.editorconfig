@@ -44,6 +44,14 @@ build_metadata.AdditionalFiles.CssScope = b-iqdqu3mer6
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2hhcmFjdGVycy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-rgpndt7tju
 
+[/Users/marco/StarWarsApp/Pages/Creatures.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ3JlYXR1cmVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-pnl6kvxf5v
+
+[/Users/marco/StarWarsApp/Pages/Droids.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRHJvaWRzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-hyp4qf5gna
+
 [/Users/marco/StarWarsApp/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-vc2odwt54h
@@ -51,3 +59,7 @@ build_metadata.AdditionalFiles.CssScope = b-vc2odwt54h
 [/Users/marco/StarWarsApp/Shared/EntityCard.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0VudGl0eUNhcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-oh9wm7fdtq
+
+[/Users/marco/StarWarsApp/Shared/Pager.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1BhZ2VyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-7lm1uwkado
