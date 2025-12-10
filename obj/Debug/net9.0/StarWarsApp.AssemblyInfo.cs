@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StarWarsApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+64c34c79abcb958b2c84632ce794bc15217c6788")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e703209c06b3eedc1b360edb09ed260c8d76c60e")]
 [assembly: System.Reflection.AssemblyProductAttribute("StarWarsApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StarWarsApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

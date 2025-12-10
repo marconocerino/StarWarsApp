@@ -57,97 +57,6 @@
   color: #fff;
   box-shadow: 0 0 4px rgba(45, 107, 255, 0.35);
 }
-/* /Pages/Characters.razor.rz.scp.css */
-.characters-root[b-rgpndt7tju] {
-  min-height: 100vh;
-  background: #020308;
-  color: #f5f5f5;
-  padding: 2.5rem 3rem 4rem;
-}
-
-.characters-heading[b-rgpndt7tju] {
-  font-size: 1.2rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  opacity: 0.8;
-  margin: 0 0 1.5rem;
-}
-
-.characters-status[b-rgpndt7tju] {
-  opacity: 0.9;
-  font-size: 0.95rem;
-  color: #fff;
-}
-
-.characters-status.error[b-rgpndt7tju] {
-  color: #ff6b6b;
-}
-
-.characters-list[b-rgpndt7tju] {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-/* /Pages/Creatures.razor.rz.scp.css */
-.creatures-root[b-pnl6kvxf5v] {
-  min-height: 100vh;
-  background: #020308;
-  color: #f5f5f5;
-  padding: 2.5rem 3rem 4rem;
-}
-
-.creatures-heading[b-pnl6kvxf5v] {
-  font-size: 1.2rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  opacity: 0.8;
-  margin: 0 0 1.5rem;
-}
-
-.creatures-status[b-pnl6kvxf5v] {
-  opacity: 0.9;
-  font-size: 0.95rem;
-}
-
-.creatures-status.error[b-pnl6kvxf5v] {
-  color: #ff6b6b;
-}
-
-.creatures-list[b-pnl6kvxf5v] {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-/* /Pages/Droids.razor.rz.scp.css */
-.droids-root[b-hyp4qf5gna] {
-  min-height: 100vh;
-  background: #020308;
-  color: #f5f5f5;
-  padding: 2.5rem 3rem 4rem;
-}
-
-.droids-heading[b-hyp4qf5gna] {
-  font-size: 1.2rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  opacity: 0.8;
-  margin: 0 0 1.5rem;
-}
-
-.droids-status[b-hyp4qf5gna] {
-  opacity: 0.9;
-  font-size: 0.95rem;
-}
-
-.droids-status.error[b-hyp4qf5gna] {
-  color: #ff6b6b;
-}
-
-.droids-list[b-hyp4qf5gna] {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
 /* /Pages/EntityDetail.razor.rz.scp.css */
 .entity-detail-root[b-3z03wxzw63] {
   position: fixed;
@@ -254,7 +163,6 @@
   opacity: 0.92;
 }
 
-/* FOOTER NAV */
 .entity-detail-footer[b-3z03wxzw63] {
   display: flex;
   align-items: flex-start;
@@ -289,6 +197,68 @@
   font-size: 1rem;
   opacity: 0.9;
   padding: 2rem;
+}
+/* /Pages/Explore.razor.rz.scp.css */
+.entities-root[b-42yk5orra4] {
+  min-height: 100vh;
+  background: #020308;
+  color: #f5f5f5;
+  padding: 2.5rem 3rem 4rem;
+}
+
+.entities-heading[b-42yk5orra4] {
+  font-size: 1.2rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin: 0 0 1.5rem;
+}
+
+.entities-status[b-42yk5orra4] {
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+.entities-status.error[b-42yk5orra4] {
+  color: #ff6b6b;
+}
+
+.entities-toolbar[b-42yk5orra4] {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+.entities-filter-label[b-42yk5orra4] {
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.entities-filter-select[b-42yk5orra4] {
+  background: rgba(0, 0, 0, 0.6);
+  color: #f5f5f5;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+  outline: none;
+}
+
+.entities-list[b-42yk5orra4] {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.entity-link[b-42yk5orra4] {
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 /* /Pages/Home.razor.rz.scp.css */
 .hero-full[b-vc2odwt54h] {

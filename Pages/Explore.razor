@@ -1,0 +1,201 @@
+@using StarWarsApp.Shared
+
+@page "/explore"
+@inject HttpClient Http
+
+<a id="top"></a>
+<PageTitle>Explore</PageTitle>
+
+<div class="entities-root">
+    <h2 class="entities-heading">Explore</h2>
+
+    @if (isLoading)
+    {
+        <p class="entities-status">Loading entities...</p>
+    }
+    else if (!string.IsNullOrEmpty(loadError))
+    {
+        <p class="entities-status error">@loadError</p>
+    }
+    else if (!FilteredEntities.Any())
+    {
+        <p class="entities-status">No entities found.</p>
+    }
+    else
+    {
+        <div class="entities-toolbar">
+            <label class="entities-filter-label">
+                Filter
+                <select class="entities-filter-select" @onchange="OnFilterChanged">
+                    <option value="all">All</option>
+                    <option value="characters">Characters</option>
+                    <option value="droids">Droids</option>
+                    <option value="creatures">Creatures</option>
+                </select>
+            </label>
+        </div>
+
+        <div class="entities-list">
+            @foreach (var e in PagedEntities)
+            {
+                <a class="entity-link"
+                   href="@GetDetailUrl(e)">
+                    <EntityCard Name="@e.Name"
+                                Description="@e.Description"
+                                ImageUrl="@e.Image" />
+                </a>
+            }
+        </div>
+
+        <Pager @bind-CurrentPage="currentPage"
+               TotalPages="@totalPages" />
+    }
+</div>
+
+<button class="scroll-to-top" onclick="document.getElementById('top').scrollIntoView({behavior:'smooth'})">
+    ↑
+</button>
+
+@code {
+    private List<SwEntity> allEntities = new();
+    private bool isLoading = true;
+    private string? loadError;
+
+    private string selectedCategory = "all"; 
+
+    private int currentPage = 1;
+    private int pageSize = 6;
+
+    private IEnumerable<SwEntity> FilteredEntities =>
+        selectedCategory switch
+        {
+            "characters" => allEntities.Where(e => e.Category == "characters"),
+            "droids"     => allEntities.Where(e => e.Category == "droids"),
+            "creatures"  => allEntities.Where(e => e.Category == "creatures"),
+            _            => allEntities
+        };
+
+    private int TotalItems => FilteredEntities.Count();
+
+    private int totalPages =>
+        TotalItems == 0 ? 1 : (int)Math.Ceiling(TotalItems / (double)pageSize);
+
+    private IEnumerable<SwEntity> PagedEntities =>
+        FilteredEntities
+            .Skip((currentPage - 1) * pageSize)
+            .Take(pageSize);
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var droidsResponse = await Http.GetFromJsonAsync<DroidsResponse>(
+                "https://starwars-databank-server.vercel.app/api/v1/droids"
+            );
+            if (droidsResponse?.Data is not null)
+            {
+                allEntities.AddRange(
+                    droidsResponse.Data.Select(d => new SwEntity
+                    {
+                        Name = d.Name,
+                        Description = d.Description,
+                        Image = d.Image,
+                        Category = "droids"
+                    }));
+            }
+
+            var charactersResponse = await Http.GetFromJsonAsync<CharactersResponse>(
+                "https://starwars-databank-server.vercel.app/api/v1/characters"
+            );
+            if (charactersResponse?.Data is not null)
+            {
+                allEntities.AddRange(
+                    charactersResponse.Data.Select(c => new SwEntity
+                    {
+                        Name = c.Name,
+                        Description = c.Description,
+                        Image = c.Image,
+                        Category = "characters"
+                    }));
+            }
+
+            var creaturesResponse = await Http.GetFromJsonAsync<CreaturesResponse>(
+                "https://starwars-databank-server.vercel.app/api/v1/creatures"
+            );
+            if (creaturesResponse?.Data is not null)
+            {
+                allEntities.AddRange(
+                    creaturesResponse.Data.Select(cr => new SwEntity
+                    {
+                        Name = cr.Name,
+                        Description = cr.Description,
+                        Image = cr.Image,
+                        Category = "creatures"
+                    }));
+            }
+
+            currentPage = 1;
+        }
+        catch (Exception ex)
+        {
+            loadError = "Failed to load entities: " + ex.Message;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void OnFilterChanged(ChangeEventArgs e)
+    {
+        selectedCategory = e.Value?.ToString() ?? "all";
+        currentPage = 1;
+    }
+
+    private static string GetDetailUrl(SwEntity e) =>
+        $"/{e.Category}/{Uri.EscapeDataString(e.Name)}";
+
+    public class DroidsResponse
+    {
+        public List<SwDroid> Data { get; set; } = new();
+    }
+
+    public class CharactersResponse
+    {
+        public List<SwCharacter> Data { get; set; } = new();
+    }
+
+    public class CreaturesResponse
+    {
+        public List<SwCreature> Data { get; set; } = new();
+    }
+
+    public class SwDroid
+    {
+        public string Name { get; set; } = "";
+        public string Description { get; set; } = "";
+        public string Image { get; set; } = "";
+    }
+
+    public class SwCharacter
+    {
+        public string Name { get; set; } = "";
+        public string Description { get; set; } = "";
+        public string Image { get; set; } = "";
+    }
+
+    public class SwCreature
+    {
+        public string Name { get; set; } = "";
+        public string Description { get; set; } = "";
+        public string Image { get; set; } = "";
+    }
+
+    public class SwEntity
+    {
+        public string Name { get; set; } = "";
+        public string Description { get; set; } = "";
+        public string Image { get; set; } = "";
+        public string Category { get; set; } = "";
+    }
+}

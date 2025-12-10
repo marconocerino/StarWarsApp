@@ -28,8 +28,8 @@ else
     <div class="entity-detail-root" style="@BackgroundStyle">
         <div class="entity-detail-overlay">
             <header class="entity-detail-header">
-                <span class="brand-mini">@Category • DATAVAULT</span>
-                <span class="entity-tagline">@Category PROFILE</span>
+                <span class="brand-mini">@CategoryDisplay • DATAVAULT</span>
+                <span class="entity-tagline">@CategoryDisplay PROFILE</span>
             </header>
 
             <main class="entity-detail-main">
@@ -51,7 +51,9 @@ else
             </main>
 
             <footer class="entity-detail-footer">
-                <a href="@($"/{Category}")" class="back-link">‹ Back to @Category</a>
+                <a href="@($"/explore?category={CategorySlug}")" class="back-link">
+                    ‹ Back to @CategoryDisplay
+                </a>
             </footer>
         </div>
     </div>
@@ -60,11 +62,19 @@ else
 @code {
     [Parameter] public string Name { get; set; } = string.Empty;
 
-    private string Category = "";
+    private string CategorySlug = "";  // "droids", "characters", "creatures"
     private SwEntity? entity;
     private bool isLoading = true;
     private string? loadError;
 
+    private string CategoryDisplay =>
+        CategorySlug switch
+        {
+            "droids"      => "Droids",
+            "characters"  => "Characters",
+            "creatures"   => "Creatures",
+            _             => "Entity"
+        };
 
     private string BackgroundStyle =>
         entity is null || string.IsNullOrWhiteSpace(entity.Image)
@@ -77,18 +87,19 @@ else
         loadError = null;
         entity = null;
 
-        var uri = new Uri(Nav.Uri);
-        var segments = uri.AbsolutePath.Trim('/').Split('/', StringSplitOptions.RemoveEmptyEntries);
-        Category = segments.Length > 0 ? segments[0] : "";
+        // figure out if we're on /droids/{Name}, /characters/{Name} or /creatures/{Name}
+        var relative = Nav.ToBaseRelativePath(Nav.Uri);
+        var segments = relative.Split('/', StringSplitOptions.RemoveEmptyEntries);
+        CategorySlug = segments.Length > 0 ? segments[0] : "";
 
         try
         {
-            var url = Category switch
+            var url = CategorySlug switch
             {
-                "droids" => "https://starwars-databank-server.vercel.app/api/v1/droids",
+                "droids"     => "https://starwars-databank-server.vercel.app/api/v1/droids",
                 "characters" => "https://starwars-databank-server.vercel.app/api/v1/characters",
-                "creatures" => "https://starwars-databank-server.vercel.app/api/v1/creatures",
-                _ => null
+                "creatures"  => "https://starwars-databank-server.vercel.app/api/v1/creatures",
+                _            => null
             };
 
             if (url is null)
