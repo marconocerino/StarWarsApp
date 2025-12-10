@@ -1079,10 +1079,10 @@
 /Users/marco/StarWarsApp/obj/Debug/net9.0/scopedcss/Pages/Explore.razor.rz.scp.css
 /Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/w6iwgit27d-696zl7kyfp.gz
 /Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/gaj8hk84co-696zl7kyfp.gz
-/Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/StarWarsApp.i5y8xuzl6f.wasm
-/Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/StarWarsApp.5bg5f6ms4m.pdb
-/Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/StarWarsApp.i5y8xuzl6f.wasm.gz
-/Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/StarWarsApp.5bg5f6ms4m.pdb.gz
-/Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/wyb9ucp50x-i5y8xuzl6f.gz
-/Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/gyppjpwkig-5bg5f6ms4m.gz
-/Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/likf1um16j-s5b8hcfize.gz
+/Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/StarWarsApp.kwt493k6cy.wasm
+/Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/StarWarsApp.kg8tuu7hvz.pdb
+/Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/StarWarsApp.kwt493k6cy.wasm.gz
+/Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/StarWarsApp.kg8tuu7hvz.pdb.gz
+/Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/wyb9ucp50x-kwt493k6cy.gz
+/Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/gyppjpwkig-kg8tuu7hvz.gz
+/Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/likf1um16j-oiwxqhriq5.gz
