@@ -26,24 +26,30 @@ jobs:
       - name: Restore
         run: dotnet restore
 
-      - name: Build
-        run: dotnet build --configuration Release --no-restore
+      - name: Build app
+        run: dotnet build StarWarsApp.csproj --configuration Release --no-restore
+
+      - name: Build E2E tests
+        run: dotnet build StarWarsApp.E2E/StarWarsApp.E2E.csproj --configuration Release --no-restore
 
       - name: Install Playwright CLI
-        run: dotnet tool install --global Microsoft.Playwright.CLI
+        run: |
+          dotnet tool install --global Microsoft.Playwright.CLI
+          echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
 
       - name: Install Playwright browsers
         run: playwright install --with-deps
 
       - name: Start app
         run: |
-          dotnet run --project StarWarsApp/StarWarsApp.csproj --configuration Release --urls $ASPNETCORE_URLS &
-          echo "Waiting..."
+          dotnet run --project StarWarsApp.csproj --configuration Release --urls $ASPNETCORE_URLS &
+          echo "Waiting for app to start..."
           for i in {1..30}; do
             if curl -sSf "$ASPNETCORE_URLS" > /dev/null; then
               echo "App is up!"
               break
             fi
+            echo "Still waiting..."
             sleep 2
           done
 
@@ -51,7 +57,7 @@ jobs:
         run: dotnet test StarWarsApp.E2E/StarWarsApp.E2E.csproj --configuration Release --no-build
 
       - name: Publish app
-        run: dotnet publish StarWarsApp/StarWarsApp.csproj -c Release -o ./publish
+        run: dotnet publish StarWarsApp.csproj -c Release -o ./publish
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
