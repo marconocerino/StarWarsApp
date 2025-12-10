@@ -1,7 +1,151 @@
 ﻿@page "/"
+@using System.Net.Http.Json
+@inject HttpClient Http
+@inject NavigationManager NavManager
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+@if (isLoading)
+{
+    <div class="hero-card-loading">
+        <p>Loading...</p>
+    </div>
+}
+else if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="hero-card-error">
+        <p>@errorMessage</p>
+    </div>
+}
+else if (currentLocation is not null)
+{
+    <div class="hero-full" style="background-image: url('@currentLocation.Image');">
+        <div class="hero-overlay">
+            <div class="hero-inner">
 
-Welcome to your new app.
+                <div class="hero-middle">
+
+                    <div class="hero-heading">
+                        <h1>
+                            <span class="hero-title-main">Explore the Galaxy</span><br />
+                            <span class="hero-title-sub">...not so far away</span>
+                        </h1>
+                    </div>
+
+                    <div class="hero-search-row">
+                        <div class="hero-search">
+                            <span class="hero-search-icon">🔍</span>
+                            <input class="hero-search-input"
+                                   placeholder="Find a character"
+                                   @bind="characterSearchTerm"
+                                   @bind:event="oninput"
+                                   @onkeydown="HandleSearchKeyDown" />
+                        </div>
+
+                        <button class="hero-search-button" @onclick="SearchCharacter">Search</button>
+                    </div>
+                </div>
+
+                <div class="hero-bottom">
+                    <div class="hero-location-info">
+                        <div class="hero-location-index">@((currentIndex + 1).ToString("00"))</div>
+
+                        <div class="hero-location-text">
+                            <div class="hero-location-name">@currentLocation.Name</div>
+                            <div class="hero-location-description">@currentLocation.Description</div>
+                        </div>
+                    </div>
+
+                    <div class="hero-arrows">
+                        <button class="hero-arrow-btn" @onclick="PrevLocation">‹</button>
+                        <button class="hero-arrow-btn" @onclick="NextLocation">›</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private class LocationsResponse
+    {
+        public List<Location> Data { get; set; } = new();
+    }
+
+    private class Location
+    {
+        public string Name { get; set; } = "";
+        public string Description { get; set; } = "";
+        public string Image { get; set; } = "";
+    }
+
+    private List<Location> locations = new();
+    private Location? currentLocation;
+    private int currentIndex;
+
+    private bool isLoading = true;
+    private string? errorMessage;
+    private string characterSearchTerm = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var response = await Http.GetFromJsonAsync<LocationsResponse>(
+                "https://starwars-databank-server.vercel.app/api/v1/locations"
+            );
+
+            if (response?.Data.Count > 0)
+            {
+                locations = response.Data;
+                currentLocation = locations[0];
+                currentIndex = 0;
+            }
+            else
+            {
+                errorMessage = "No locations found.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Failed to load locations: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void NextLocation()
+    {
+        if (locations.Count == 0) return;
+
+        currentIndex = (currentIndex + 1) % locations.Count;
+        currentLocation = locations[currentIndex];
+    }
+
+    private void PrevLocation()
+    {
+        if (locations.Count == 0) return;
+
+        currentIndex = (currentIndex - 1 + locations.Count) % locations.Count;
+        currentLocation = locations[currentIndex];
+    }
+
+    private void SearchCharacter()
+    {
+        var query = characterSearchTerm.Trim();
+
+        if (query.Length < 2)
+            return;
+
+        NavManager.NavigateTo($"/characters?name={Uri.EscapeDataString(query)}");
+    }
+
+    private void HandleSearchKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+            SearchCharacter();
+    }
+}

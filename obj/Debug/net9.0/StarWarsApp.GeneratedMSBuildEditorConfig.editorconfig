@@ -28,18 +28,6 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/marco/StarWarsApp/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ291bnRlci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/marco/StarWarsApp/Pages/Home.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSG9tZS5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/marco/StarWarsApp/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvV2VhdGhlci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
 [/Users/marco/StarWarsApp/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -51,3 +39,7 @@ build_metadata.AdditionalFiles.CssScope = b-6spae10eyg
 [/Users/marco/StarWarsApp/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0L05hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-iqdqu3mer6
+
+[/Users/marco/StarWarsApp/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-vc2odwt54h

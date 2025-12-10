@@ -199,8 +199,6 @@
 /Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/icudt_CJK.tjcz0u77k5.dat
 /Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/icudt_EFIGS.tptq2av103.dat
 /Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/icudt_no_CJK.lfu7j35m59.dat
-/Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/StarWarsApp.qr9tmmy8gr.wasm
-/Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/StarWarsApp.b3xa3llhlo.pdb
 /Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/blazor.boot.json
 /Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/blazor.webassembly.js.gz
 /Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/Microsoft.AspNetCore.Authorization.z6jo10m0rd.wasm.gz
@@ -403,8 +401,6 @@
 /Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/icudt_CJK.tjcz0u77k5.dat.gz
 /Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/icudt_EFIGS.tptq2av103.dat.gz
 /Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/icudt_no_CJK.lfu7j35m59.dat.gz
-/Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/StarWarsApp.qr9tmmy8gr.wasm.gz
-/Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/StarWarsApp.b3xa3llhlo.pdb.gz
 /Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/blazor.boot.json.gz
 /Users/marco/StarWarsApp/bin/Debug/net9.0/StarWarsApp.staticwebassets.runtime.json
 /Users/marco/StarWarsApp/bin/Debug/net9.0/StarWarsApp.staticwebassets.endpoints.json
@@ -866,8 +862,6 @@
 /Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/lv08sg0egn-bhgmfpugx0.gz
 /Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/omh5rqv4se-iag0ou56lh.gz
 /Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/1vuq364kq0-md9yvkcqlf.gz
-/Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/w6iwgit27d-whfldmtj9h.gz
-/Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/gaj8hk84co-whfldmtj9h.gz
 /Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/gtxfy7nicz-z6jo10m0rd.gz
 /Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/k1wops0b8b-65wbz7t8mt.gz
 /Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/k9mhgpkj3j-ysqd97eroy.gz
@@ -1068,9 +1062,6 @@
 /Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/3nx6u5yani-tjcz0u77k5.gz
 /Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/zwk6emo4mr-tptq2av103.gz
 /Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/fhitm0sl71-lfu7j35m59.gz
-/Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/wyb9ucp50x-qr9tmmy8gr.gz
-/Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/gyppjpwkig-b3xa3llhlo.gz
-/Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/likf1um16j-3j4wi14hnz.gz
 /Users/marco/StarWarsApp/obj/Debug/net9.0/staticwebassets.build.json
 /Users/marco/StarWarsApp/obj/Debug/net9.0/staticwebassets.build.json.cache
 /Users/marco/StarWarsApp/obj/Debug/net9.0/staticwebassets.development.json
@@ -1080,3 +1071,14 @@
 /Users/marco/StarWarsApp/obj/Debug/net9.0/refint/StarWarsApp.dll
 /Users/marco/StarWarsApp/obj/Debug/net9.0/StarWarsApp.pdb
 /Users/marco/StarWarsApp/obj/Debug/net9.0/ref/StarWarsApp.dll
+/Users/marco/StarWarsApp/obj/Debug/net9.0/StarWarsApp.sourcelink.json
+/Users/marco/StarWarsApp/obj/Debug/net9.0/scopedcss/Pages/Home.razor.rz.scp.css
+/Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/w6iwgit27d-x2wmlt829x.gz
+/Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/gaj8hk84co-x2wmlt829x.gz
+/Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/StarWarsApp.vw3cjq3tbj.wasm
+/Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/StarWarsApp.flsmqeqzxt.pdb
+/Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/StarWarsApp.vw3cjq3tbj.wasm.gz
+/Users/marco/StarWarsApp/bin/Debug/net9.0/wwwroot/_framework/StarWarsApp.flsmqeqzxt.pdb.gz
+/Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/wyb9ucp50x-vw3cjq3tbj.gz
+/Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/gyppjpwkig-flsmqeqzxt.gz
+/Users/marco/StarWarsApp/obj/Debug/net9.0/compressed/likf1um16j-ihg0jsy036.gz

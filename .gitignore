@@ -1,0 +1,57 @@
+# Build results
+bin/
+obj/
+out/
+
+# Auto-generated files
+*.g.cs
+*.g.i.cs
+*.css.map
+*.dll
+*.exe
+*.pdb
+*.cache/
+*.log
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# VS Code settings (safe to ignore)
+.vscode/
+
+# MacOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+__MACOSX/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+*.nuget/
+
+# Publish output
+wwwroot/dist/
+wwwroot/build/
+BundleArtifacts/
+PublishProfiles/
+
+# ASP.NET scaffolding
+ScaffoldingReadMe.txt
+
+# Node modules (if you ever add Tailwind or npm tools)
+node_modules/
+
+# Temp files
+*.tmp
+*.temp
+~*
+*.swp
+*.swo
+
+# Azure deploy artifacts
+.azure/
