@@ -23,8 +23,11 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Restore
-        run: dotnet restore
+      - name: Restore app
+        run: dotnet restore StarWarsApp.csproj
+
+      - name: Restore E2E tests
+        run: dotnet restore StarWarsApp.E2E/StarWarsApp.E2E.csproj
 
       - name: Build app
         run: dotnet build StarWarsApp.csproj --configuration Release --no-restore
@@ -59,6 +62,7 @@ jobs:
       - name: Publish app
         run: dotnet publish StarWarsApp.csproj -c Release -o ./publish
 
+      # Deploy to Azure App Service
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
