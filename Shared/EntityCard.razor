@@ -1,0 +1,18 @@
+<section class="entity-section">
+    <div class="entity-text">
+        <h1 class="entity-name">@Name</h1>
+        <p class="entity-description">@Description</p>
+    </div>
+
+    <div class="entity-image-wrap">
+        <img src="@ImageUrl"
+             alt="@Name"
+             class="entity-image" />
+    </div>
+</section>
+
+@code {
+    [Parameter] public string Name { get; set; } = string.Empty;
+    [Parameter] public string Description { get; set; } = string.Empty;
+    [Parameter] public string ImageUrl { get; set; } = string.Empty;
+}

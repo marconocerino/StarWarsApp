@@ -1,6 +1,7 @@
+@using StarWarsApp.Shared
+
 @page "/characters"
 @inject HttpClient Http
-@inject NavigationManager NavManager
 
 <a id="top"></a>
 <PageTitle>Characters</PageTitle>
@@ -25,18 +26,9 @@
         <div class="characters-list">
             @foreach (var c in characters)
             {
-                <section class="character-section">
-                    <div class="character-text">
-                        <h1 class="character-name">@c.Name</h1>
-                        <p class="character-description">@c.Description</p>
-                    </div>
-
-                    <div class="character-image-wrap">
-                        <img src="@c.Image"
-                             alt="@c.Name"
-                             class="character-image" />
-                    </div>
-                </section>
+                <EntityCard Name="@c.Name"
+                            Description="@c.Description"
+                            ImageUrl="@c.Image" />
             }
         </div>
     }

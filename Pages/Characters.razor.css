@@ -29,44 +29,6 @@
   gap: 4rem;
 }
 
-.character-section {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-  padding: 3rem 2rem;
-  border-radius: 1.2rem;
-  background: radial-gradient(circle at top left, #151824 0, #05060b 60%);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.75);
-}
-
-.character-text {
-  flex: 1;
-}
-
-.character-name {
-  font-size: 3rem;
-  margin: 0 0 1rem;
-  letter-spacing: 0.03em;
-}
-
-.character-description {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  opacity: 0.9;
-}
-
-.character-image-wrap {
-  flex: 0 0 320px;
-  max-width: 340px;
-}
-
-.character-image {
-  width: 100%;
-  border-radius: 1rem;
-  object-fit: cover;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9);
-}
-
 .scroll-to-top {
   position: fixed;
   bottom: 2.2rem;
