@@ -26,9 +26,12 @@
         <div class="droids-list">
             @foreach (var d in PagedDroids)
             {
-                <EntityCard Name="@d.Name"
-                            Description="@d.Description"
-                            ImageUrl="@d.Image" />
+                <a class="entity-link"
+                  href="@($"/droids/{Uri.EscapeDataString(d.Name)}")">
+                    <EntityCard Name="@d.Name"
+                                Description="@d.Description"
+                                ImageUrl="@d.Image" />
+                </a>
             }
         </div>
 

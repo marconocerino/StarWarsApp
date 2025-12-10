@@ -1,0 +1,132 @@
+@page "/droids/{Name}"
+@page "/characters/{Name}"
+@page "/creatures/{Name}"
+
+@inject HttpClient Http
+@inject NavigationManager Nav
+
+@if (isLoading)
+{
+    <div class="entity-detail-root loading-state">
+        <p>Loading...</p>
+    </div>
+}
+else if (loadError is not null)
+{
+    <div class="entity-detail-root error-state">
+        <p>@loadError</p>
+    </div>
+}
+else if (entity is null)
+{
+    <div class="entity-detail-root error-state">
+        <p>Entity not found.</p>
+    </div>
+}
+else
+{
+    <div class="entity-detail-root" style="@BackgroundStyle">
+        <div class="entity-detail-overlay">
+            <header class="entity-detail-header">
+                <span class="brand-mini">@Category • DATAVAULT</span>
+                <span class="entity-tagline">@Category PROFILE</span>
+            </header>
+
+            <main class="entity-detail-main">
+                <h1 class="entity-hero-heading">
+                    <span class="hero-prefix">I AM</span>
+                    <span class="hero-name">@entity.Name.ToUpperInvariant().</span>
+                </h1>
+
+                <div class="aurebesh-line">
+                    <span>ƎU11Λ VΛ 0IΞΓΛD0.</span>
+                </div>
+
+                <section class="entity-bio-block">
+                    <h2 class="entity-bio-label">Bio</h2>
+                    <p class="entity-bio">
+                        @entity.Description
+                    </p>
+                </section>
+            </main>
+
+            <footer class="entity-detail-footer">
+                <a href="@($"/{Category}")" class="back-link">‹ Back to @Category</a>
+            </footer>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public string Name { get; set; } = string.Empty;
+
+    private string Category = "";
+    private SwEntity? entity;
+    private bool isLoading = true;
+    private string? loadError;
+
+
+    private string BackgroundStyle =>
+        entity is null || string.IsNullOrWhiteSpace(entity.Image)
+            ? string.Empty
+            : $"""background-image: linear-gradient(120deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 45%, rgba(0,0,0,0.95) 100%), url('{entity.Image}');""";
+
+    protected override async Task OnParametersSetAsync()
+    {
+        isLoading = true;
+        loadError = null;
+        entity = null;
+
+        var uri = new Uri(Nav.Uri);
+        var segments = uri.AbsolutePath.Trim('/').Split('/', StringSplitOptions.RemoveEmptyEntries);
+        Category = segments.Length > 0 ? segments[0] : "";
+
+        try
+        {
+            var url = Category switch
+            {
+                "droids" => "https://starwars-databank-server.vercel.app/api/v1/droids",
+                "characters" => "https://starwars-databank-server.vercel.app/api/v1/characters",
+                "creatures" => "https://starwars-databank-server.vercel.app/api/v1/creatures",
+                _ => null
+            };
+
+            if (url is null)
+            {
+                loadError = "Unknown entity type.";
+                return;
+            }
+
+            var response = await Http.GetFromJsonAsync<EntitiesResponse>(url);
+            var all = response?.Data ?? new List<SwEntity>();
+
+            entity = all.FirstOrDefault(e =>
+                string.Equals(e.Name, Name, StringComparison.OrdinalIgnoreCase));
+
+            if (entity is null)
+            {
+                loadError = $"No entity found with name '{Name}'.";
+            }
+        }
+        catch (Exception ex)
+        {
+            loadError = "Failed to load entity: " + ex.Message;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    public class EntitiesResponse
+    {
+        public List<SwEntity> Data { get; set; } = new();
+    }
+
+    public class SwEntity
+    {
+        public string Name { get; set; } = "";
+        public string Description { get; set; } = "";
+        public string Image { get; set; } = "";
+    }
+}

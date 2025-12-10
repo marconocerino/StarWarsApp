@@ -88,29 +88,6 @@
   flex-direction: column;
   gap: 4rem;
 }
-
-.scroll-to-top[b-rgpndt7tju] {
-  position: fixed;
-  bottom: 2.2rem;
-  right: 2.2rem;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  border: none;
-  font-size: 1.6rem;
-  font-weight: bold;
-  background: rgba(255, 255, 255, 0.9);
-  color: #000;
-  cursor: pointer;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-  z-index: 200;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
-}
-
-.scroll-to-top:hover[b-rgpndt7tju] {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.75);
-}
 /* /Pages/Creatures.razor.rz.scp.css */
 .creatures-root[b-pnl6kvxf5v] {
   min-height: 100vh;
@@ -171,28 +148,154 @@
   flex-direction: column;
   gap: 4rem;
 }
-
-.scroll-to-top[b-hyp4qf5gna] {
+/* /Pages/EntityDetail.razor.rz.scp.css */
+/* ROOT BACKGROUND WRAPPER – like .hero-full */
+.entity-detail-root[b-3z03wxzw63] {
   position: fixed;
-  bottom: 2.2rem;
-  right: 2.2rem;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #020308;
+  background-position: center right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
   border: none;
-  font-size: 1.6rem;
-  font-weight: bold;
-  background: rgba(255, 255, 255, 0.9);
-  color: #000;
-  cursor: pointer;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-  z-index: 200;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  color: #f5f5f5;
+  overflow: hidden;
+  z-index: 0; /* nav will sit above this */
 }
 
-.scroll-to-top:hover[b-hyp4qf5gna] {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.75);
+/* OVERLAY – like .hero-overlay + .hero-inner combined */
+.entity-detail-overlay[b-3z03wxzw63] {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.85)
+  );
+  display: flex;
+  flex-direction: column;
+  padding: 5.5rem 3.5rem 3rem; /* extra top padding to clear navbar */
+  z-index: 1;
+}
+
+/* TOP HEADER BAR */
+.entity-detail-header[b-3z03wxzw63] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin-bottom: 2.5rem;
+}
+
+.brand-mini[b-3z03wxzw63] {
+  font-weight: 600;
+}
+
+.entity-tagline[b-3z03wxzw63] {
+  opacity: 0.7;
+}
+
+/* MAIN HERO SECTION */
+.entity-detail-main[b-3z03wxzw63] {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 48rem;
+}
+
+.entity-hero-heading[b-3z03wxzw63] {
+  font-size: clamp(2.8rem, 5vw, 4.4rem);
+  line-height: 1.05;
+  margin: 0 0 1.2rem;
+  text-transform: uppercase;
+}
+
+.hero-prefix[b-3z03wxzw63] {
+  display: block;
+  font-weight: 300;
+}
+
+.hero-name[b-3z03wxzw63] {
+  display: block;
+  font-weight: 800;
+}
+
+.hero-name[b-3z03wxzw63]::first-letter {
+  letter-spacing: 0.02em;
+}
+
+/* DECORATIVE “AUREBESH” LINE */
+.aurebesh-line[b-3z03wxzw63] {
+  font-size: 0.85rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  margin-bottom: 2rem;
+}
+
+/* BIO BLOCK */
+.entity-bio-block[b-3z03wxzw63] {
+  max-width: 30rem;
+}
+
+.entity-bio-label[b-3z03wxzw63] {
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin: 0 0 0.6rem;
+}
+
+.entity-bio[b-3z03wxzw63] {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  opacity: 0.92;
+}
+
+/* FOOTER NAV */
+.entity-detail-footer[b-3z03wxzw63] {
+  display: flex;
+  align-items: flex-start;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-top: 2.2rem;
+}
+
+.back-link[b-3z03wxzw63] {
+  color: #f5f5f5;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(245, 245, 245, 0.5);
+  padding-bottom: 0.1rem;
+  text-transform: capitalize;
+}
+
+.back-link:hover[b-3z03wxzw63] {
+  opacity: 0.85;
+}
+
+.scroll-hint[b-3z03wxzw63] {
+  font-size: 0.72rem;
+}
+
+/* LOADING + ERROR STATES – keep simple, reuse bg */
+.loading-state[b-3z03wxzw63],
+.error-state[b-3z03wxzw63] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  opacity: 0.9;
+  padding: 2rem;
 }
 /* /Pages/Home.razor.rz.scp.css */
 .hero-full[b-vc2odwt54h] {

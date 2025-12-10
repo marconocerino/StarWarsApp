@@ -26,9 +26,12 @@
         <div class="characters-list">
             @foreach (var c in PagedCharacters)
             {
-                <EntityCard Name="@c.Name"
-                            Description="@c.Description"
-                            ImageUrl="@c.Image" />
+                <a class="entity-link"
+                  href="@($"/characters/{Uri.EscapeDataString(c.Name)}")">
+                    <EntityCard Name="@c.Name"
+                                Description="@c.Description"
+                                ImageUrl="@c.Image" />
+                </a>
             }
         </div>
 

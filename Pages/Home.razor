@@ -140,7 +140,7 @@ else if (currentLocation is not null)
         if (query.Length < 2)
             return;
 
-        NavManager.NavigateTo($"/characters?name={Uri.EscapeDataString(query)}");
+        NavManager.NavigateTo($"/characters/{Uri.EscapeDataString(query)}");
     }
 
     private void HandleSearchKeyDown(KeyboardEventArgs e)
